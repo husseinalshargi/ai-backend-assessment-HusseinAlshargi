@@ -2,7 +2,6 @@ import os #to read files and env variables
 import json #to read json files
 import hashlib #to hash files
 from pathlib import Path
-from datetime import datetime #to handle dates and times
 
 from app.database import sessionlocal #to create a session to interact with the db
 from app.models.ingested_file_record import IngestedFileRecord #to use the model to create a record in the db
