@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Python Core Concepts",
+        "topic": "Python",
+        "content": [
+            "Python is dynamically typed: No need to declare variable types.",
+            "Everything in Python is an object.",
+            "Functions are first-class citizens.",
+            "List comprehensions allow compact processing of sequences.",
+            "Decorators can modify function behavior.",
+            "Generators use `yield` for lazy iteration.",
+            "Context managers (with) manage resources cleanly.",
+            "Indentation defines code blocks instead of braces.",
+            "Common types: list, dict, set, tuple, str.",
+            "Python has built-in garbage collection and memory management."
+        ]
+    }
+]

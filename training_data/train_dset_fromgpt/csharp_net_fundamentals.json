@@ -1,0 +1,18 @@
+[
+    {
+        "title": "C# and .NET Fundamentals",
+        "topic": "C#",
+        "content": [
+            "C# is a statically typed, object-oriented language.",
+            "Common types: int, string, bool, float, decimal.",
+            "Value types (int) vs Reference types (class).",
+            "Access modifiers: public, private, protected, internal.",
+            "Auto-implemented properties simplify class design.",
+            "Async/await supports asynchronous programming.",
+            "LINQ enables SQL-like queries in C#.",
+            "ASP.NET is used for building web apps and APIs.",
+            "Entity Framework is the default ORM for .NET.",
+            ".NET Core/.NET 5+ is cross-platform and modern."
+        ]
+    }
+]

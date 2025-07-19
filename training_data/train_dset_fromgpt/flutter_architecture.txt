@@ -1,0 +1,33 @@
+Title: Python Core Concepts
+
+1. Python is dynamically typed:
+   - No need to declare variable types explicitly.
+   - Example: `x = 10` (type inferred as int)
+
+2. Everything is an object:
+   - Even functions and classes are objects.
+   - Example: `type(3)` returns `<class 'int'>`
+
+3. Functions are first-class citizens:
+   - Can be passed, returned, and stored in variables.
+
+4. List comprehensions:
+   - Compact way to process lists: `[x for x in range(10) if x % 2 == 0]`
+
+5. Decorators:
+   - Functions that modify behavior of other functions.
+   - Example: `@staticmethod`, `@login_required`
+
+6. Generators and `yield`:
+   - Used for lazy evaluation of sequences.
+
+7. Context managers and `with`:
+   - Used to manage resources like files and DB connections.
+
+8. Python uses indentation instead of braces for blocks.
+
+9. Common built-in types: `list`, `dict`, `set`, `tuple`, `str`
+
+10. Python has garbage collection and memory management built-in.
+
+Source: Python 3.11 Docs, Real Python

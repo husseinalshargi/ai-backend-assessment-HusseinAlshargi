@@ -1,0 +1,48 @@
+Title: REST API Best Practices
+
+1. Use nouns for endpoints:
+   ✅ /users instead of ❌ /getUsers
+
+2. Use HTTP methods correctly:
+   - GET for reading
+   - POST for creating
+   - PUT for full updates
+   - PATCH for partial updates
+   - DELETE for deletion
+
+3. Return proper status codes:
+   - 200 OK
+   - 201 Created
+   - 400 Bad Request
+   - 401 Unauthorized
+   - 404 Not Found
+   - 500 Internal Server Error
+
+4. Use plural nouns:
+   - /products ✅ not /product ❌
+
+5. Nest resources:
+   - /users/{userId}/orders
+
+6. Use filtering, sorting, and pagination:
+   - /users?sort=age&limit=10&offset=20
+
+7. Provide versioning:
+   - /api/v1/users
+
+8. Use consistent naming conventions:
+   - snake_case ❌
+   - camelCase ❌
+   - kebab-case ✅
+
+9. Always use HTTPS
+
+10. Provide clear and helpful error messages:
+   {
+     "error": {
+       "code": 400,
+       "message": "Invalid email format"
+     }
+   }
+
+Reference: RESTful API Design by Microsoft and Google Engineering Teams

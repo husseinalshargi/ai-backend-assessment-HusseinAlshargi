@@ -116,6 +116,7 @@ def ingest_files():
     for dir_path, _, file_names in os.walk(training_data_dir):
         for file_name in file_names:
             file_path = os.path.join(Path(dir_path), file_name)
+            #print(f"Processing file: {file_name} at {file_path}")
             #get the file extension
             file_extension = Path(file_name).suffix.lower()
 
