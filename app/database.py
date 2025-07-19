@@ -13,7 +13,7 @@ username = os.getenv("PostgreSQL_username")
 dbname=os.getenv("PostgreSQL_dbname")
 port=os.getenv("PostgreSQL_port")
 
-print(f"Connecting to database at {host}:{port} with user {username} and database {dbname}")
+#print(f"Connecting to database at {host}:{port} with user {username} and database {dbname}")
 #to connect to the db using sqlalchemy we need to create an engine
 database_url = f"postgresql://{username}:{password}@{host}:{port}/{dbname}"
 #after creating the url now we can create the engine, pool_pre_ping  -> in order to not connect to the db every time we execute a query, it will check if the connection is alive before executing
