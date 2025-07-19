@@ -11,3 +11,4 @@ pydantic
 tqdm
 typer[all]
 sqlalchemy_utils
+langchain-ollama

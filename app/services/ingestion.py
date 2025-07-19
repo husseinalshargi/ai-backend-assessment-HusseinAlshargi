@@ -3,13 +3,40 @@ import json #to read json files
 import hashlib #to hash files
 from pathlib import Path
 from datetime import datetime #to handle dates and times
+
 from app.database import sessionlocal #to create a session to interact with the db
 from app.models.ingested_file_record import IngestedFileRecord #to use the model to create a record in the db
+from app.services.create_embeddings import embed_text #to use the embedding model to process the text chunks
+from app.models.document_chunk_record import DocumentChunkRecord #to use the model to create a record for the document chunks
 
 session = sessionlocal() #create a session to interact with the db
 
 #as all the training files is in one place 
 training_data_dir = "training_data/"
+
+def get_document_id(file_hash):
+    #retrieve the record from the db to get the document id
+    record = session.query(IngestedFileRecord).filter_by(file_hash=file_hash).first()
+    if record:
+        return record.id  #return the document id
+    else:
+        print(f"No record found for file hash: {file_hash}")
+        return None
+
+def save_embedding(chunk_text, embedding_vector, document_id):
+    #create a new record in the db
+    record = DocumentChunkRecord(
+        document_id=document_id,
+        chunk_text=chunk_text,
+        embedding=embedding_vector
+    )
+    #add the record to the session
+    session.add(record)
+    #flush the session to ensure the record is added to the db
+    session.flush()
+    #commit the session to save the changes to the db
+    session.commit()
+    print(f"Chunk saved for document ID {document_id}")
 
 # as the files could be large we need to chunk them to avoid performance issues when processing them using LLM, the overlapping is used to ensure that the chunks are not too small and to avoid losing context
 def chunk_text(text, chunk_size=500, overlap=50):
@@ -116,4 +143,19 @@ def ingest_files():
 
             #chunk the content to avoid performance issues when processing large files
             chunks = chunk_text(content)
+
+            #after chunking, we can process each chunk using the embedding model
+            for idx, chunk in enumerate(chunks):
+                if chunk.strip() == "":
+                    continue  #skip empty chunks
+                embedding_vector = embed_text(chunk)
+
+                #get the document id from the db
+                document_id = get_document_id(file_hash)
+                if document_id is not None:
+                    #save the chunk and its embedding in the db
+                    save_embedding(chunk, embedding_vector, document_id)
+                else:
+                    print(f"Skipping chunk {idx} of file {file_name} due to missing document ID.")
+
             
