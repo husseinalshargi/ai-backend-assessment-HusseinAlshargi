@@ -8,6 +8,10 @@ from sklearn.metrics import pairwise #to calculate cosine similarity
 
 session = sessionlocal() #create a session to interact with the db
 
+def parse_postgres_embedding(embedding_str):
+    # safely parse a PostgreSQL array string to a Python list
+    return list(map(float, embedding_str.strip('{}').split(',')))
+
 def retrieve_relevant_chunks(query, top_k = 3):
     query_embedding = np.array(embed_text(query)).reshape(1, -1) #reshape to 2D array for cosine similarity calculation
 
@@ -17,7 +21,8 @@ def retrieve_relevant_chunks(query, top_k = 3):
     scored_chunks = []
     for chunk in chunks:
         # also convert chunk embedding to 2D as as cosine_similarity expects 2D arrays
-        chunk_embedding = np.array(chunk.embedding).reshape(1, -1)
+        chunk_embedding = np.array(parse_postgres_embedding(chunk.embedding)).reshape(1, -1)
+        
         similarity = pairwise.cosine_similarity(query_embedding, chunk_embedding)
         scored_chunks.append((similarity, chunk.chunk_text))
     
