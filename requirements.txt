@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+langchain
+ollama
+redis
+psycopg2-binary
+sqlalchemy
+apscheduler
+python-docx
+python-dotenv
+tqdm
+httpx
+openai  
+scikit-learn
