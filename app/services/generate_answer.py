@@ -32,8 +32,13 @@ Answer:
 qa_chain = prompt_template | llm
 
 #function to generate an answer based on a query
-def generate_answer(query, top_k=3):
-    relevant_chunks = retrieve_relevant_chunks(query, top_k=top_k)
+def generate_answer(query, top_k=3, from_date=None, to_date=None, tenant=None, file_name=None):
+    
+    relevant_chunks = retrieve_relevant_chunks(query, top_k=top_k, 
+                                                from_date=from_date, 
+                                                to_date=to_date, 
+                                                tenant=tenant, 
+                                                file_name=file_name)
     context = "\n\n".join(relevant_chunks)
     # Run the chain with .invoke() and pass variables as a dict
     return qa_chain.invoke({"context": context, "question": query})

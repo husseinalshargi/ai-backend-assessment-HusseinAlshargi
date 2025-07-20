@@ -3,22 +3,19 @@ from sklearn.metrics import pairwise  # to calculate cosine similarity
 
 
 from app.database import sessionlocal  # to create a session to interact with the db
-from app.models.document_chunk_record import DocumentChunkRecord  # to use the model to create a
 from app.services.create_embeddings import embed_text  # to use the embedding model to process the text chunks
-from app.services.retrive_documents import parse_postgres_embedding  # to parse the embedding from the database
 
 session = sessionlocal()  # create a session to interact with the db
 
+def parse_postgres_embedding(embedding_str):
+    #safely parse a PostgreSQL array string to a Python list from a string 
+    return list(map(float, embedding_str.strip('{}').split(',')))
 
-
-def search_semantic(query, top_k = 3):
+def search_semantic(query, filtered_chunks, top_k = 3):
     query_embedding = np.array(embed_text(query)).reshape(1, -1) #reshape to 2D array for cosine similarity calculation
 
-    #load all stored chunk embeddings
-    chunks = session.query(DocumentChunkRecord).all()
-    
     scored_chunks = []
-    for chunk in chunks:
+    for chunk in filtered_chunks:
         # also convert chunk embedding to 2D as as cosine_similarity expects 2D arrays
         chunk_embedding = np.array(parse_postgres_embedding(chunk.embedding)).reshape(1, -1)
         

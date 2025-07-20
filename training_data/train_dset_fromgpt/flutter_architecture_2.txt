@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Flutter Mobile Architecture",
+    "topic": "Flutter",
+    "content": [
+      "Everything in Flutter is a widget.",
+      "StatelessWidget is immutable; StatefulWidget holds state.",
+      "Flutter apps are written in Dart.",
+      "Popular state management: BLoC, Provider, Riverpod.",
+      "The widget tree defines the UI structure.",
+      "Hot Reload allows instant code updates.",
+      "Material and Cupertino widgets support Android/iOS styles.",
+      "Asynchronous programming uses Future, async/await.",
+      "Navigation uses Navigator.push and named routes.",
+      "State management is crucial for performance."
+    ]
+  }
+]
