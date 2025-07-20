@@ -37,18 +37,19 @@ def generate_report(report : ReportRequest): #of type ReportRequest (also a tabl
             file_id=file_id
         )
 
-
+        file_title = report.title
         return {
             "message": "Report generated successfully.",
             "report_id": file_id,
-            "download_url": f"/api/report/{file_id}/download"
+            "report_title": file_title,
+            "download_url": f"/api/report/{file_id}/{file_title}/download"
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@generate_router.get("/{report_id}/download")
-def download_report(report_id):
+@generate_router.get("/{report_id}/{file_title}/download")
+def download_report(report_id, file_title):
     file_path = f"generated_reports/{report_id}.docx"
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="Report not found")
-    return FileResponse(file_path, media_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document', filename=f"{report_id}.docx") #to expose the endpoint for downloading
+    return FileResponse(file_path, media_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document', filename=f"{file_title + "-" + report_id}.docx") #to expose the endpoint for downloading

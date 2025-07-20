@@ -6,4 +6,5 @@ setup:
 run:
 	start /B cmd /C "ollama run llama3"
 	venv\Scripts\python -m uvicorn app.main:api_app --reload
+	streamlit run app/Home.py
 
