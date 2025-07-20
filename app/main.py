@@ -2,7 +2,7 @@
 import typer
 from fastapi import FastAPI
 
-from app.routers import memory
+from app.api.report.generate import generate_router
 from app.schemas.create_db_tables import create_tables
 from app.services.ingestion import ingest_files
 from app.services.evaluation import evaluate_answer
@@ -10,8 +10,8 @@ from app.services.evaluation import evaluate_answer
 typer_app = typer.Typer()
 api_app = FastAPI()
 
-#include memory router to the FastAPI app
-api_app.include_router(memory.router, prefix="/memory")
+#include report generator router to the FastAPI app
+api_app.include_router(generate_router, prefix="/api/report")
 
 #in order to run it in the cli like "python -m app.main nightly-refresh" if the bool is true then add "--now" Note: we are using - not _, also we used main instead of main.py in order to be able to import a file from the same directory whithout issues
 @typer_app.command()
