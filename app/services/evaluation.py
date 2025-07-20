@@ -34,7 +34,7 @@ def evaluate_answer(question_key = "question", correct_answer_key = "expected"):
         generated_answer = generate_answer.generate_answer(question)  #generate the answer using the AI assistant
         end_time = time.time()  #end time for performance evaluation
 
-        lastency_ms = round((end_time - start_time) * 1000, 4)  #convert to milliseconds
+        latency_ms  = round((end_time - start_time) * 1000, 4)  #convert to milliseconds
 
         #evaluate the generated answers
 
@@ -45,7 +45,7 @@ def evaluate_answer(question_key = "question", correct_answer_key = "expected"):
         similarity_percentage = round(similarity * 100, 2)
 
         #check for hallucination
-        hallucinated = not hallucination_check(generated_answer, correct_answer)
+        hallucinated = not hallucination_check(correct_answer, generated_answer)
 
 
         evaluation_results.append({
@@ -53,30 +53,36 @@ def evaluate_answer(question_key = "question", correct_answer_key = "expected"):
             "expected": correct_answer,
             "generated": generated_answer,
             "similarity": similarity_percentage,
-            "latency_ms": lastency_ms,
+            "latency_ms": latency_ms ,
             "hallucinated": hallucinated
         })
     
     #generate the evaluation report
-    with open(report_path, "w") as report_file:
-        report_file.write("Evaluation Report\n")
-        report_file.write(f"Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+    with open(report_path, "w", encoding="utf-8") as report_file:
+        report_file.write("# Evaluation Report\n\n")
+        report_file.write(f"*Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n\n")
 
         for result in evaluation_results:
-            report_file.write(f"Question: {result['question']} \nExpected Answer: {result['expected']} \nGenerated Answer: {result['generated']} \nSimilarity: {result['similarity']}% \nLatency: {result['latency_ms']} \nHallucinated: {'Yes' if result['hallucinated'] else 'No'} \n ------------------------------------------------------------------\n")
-        
-        report_file.write("\n")
+            report_file.write("----\n")
+            report_file.write(f"### Question:\n{result['question']}\n\n")
+            report_file.write(f"<small>Expected Answer: {result['expected']}</small>\n\n")
+            report_file.write(f"<small>Generated Answer: {result['generated']}</small>\n\n")
+            report_file.write(f"<small>Similarity: {result['similarity']}%</small>\n\n")
+            report_file.write(f"<small>Latency: {result['latency_ms']} ms</small>\n\n")
+            report_file.write(f"<small>Hallucinated: {'Yes' if result['hallucinated'] else 'No'}</small>\n\n")
 
-        avg_sim = sum(r["similarity"] for r in evaluation_results) / len(result)
-        avg_lat = sum(r["latency_ms"] for r in evaluation_results) / len(result)
-        hallu_rate = sum(1 for r in evaluation_results if r["hallucinated"]) / len(result)
+        report_file.write("\n---\n\n")
+
+        avg_sim = sum(r["similarity"] for r in evaluation_results) / len(evaluation_results)
+        avg_lat = sum(r["latency_ms"] for r in evaluation_results) / len(evaluation_results)
+        hallu_rate = sum(1 for r in evaluation_results if r["hallucinated"]) / len(evaluation_results)
         hallu_percentage = round(hallu_rate * 100, 2)
 
-        report_file.write(f"Average Similarity: {round(avg_sim, 4)}\n\n")
-        report_file.write(f"Average Latency: {round(avg_lat, 2)} ms\n\n")
-        report_file.write(f"Hallucination Rate: {hallu_percentage}%\n")
+        report_file.write(f"**Average Similarity:** {round(avg_sim, 4)}\n\n")
+        report_file.write(f"**Average Latency:** {round(avg_lat, 2)} ms\n\n")
+        report_file.write(f"**Hallucination Rate:** {hallu_percentage}%\n")
 
-        print("Evaluated succesfully")
+    print("Evaluated successfully")
 
 
 
