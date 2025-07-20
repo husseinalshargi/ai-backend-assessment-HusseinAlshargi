@@ -10,6 +10,7 @@ from app.schemas.create_db_tables import create_tables
 from app.services.ingestion import ingest_files
 from app.services.evaluation import evaluate_answer
 from app.api.Scheduler import scheduler_router
+from app.api.ask import ask_router
 
 typer_app = typer.Typer()
 scheduler = AsyncIOScheduler()
@@ -35,6 +36,7 @@ async def lifespan(app: FastAPI):
 api_app = FastAPI(lifespan=lifespan) #added the function to the api obj so that it starts and shuted down with it
 api_app.include_router(generate_router, prefix="/api/report")
 api_app.include_router(scheduler_router, prefix='/api')
+api_app.include_router(ask_router, prefix='/api')
 
 #CLI commands:
 
