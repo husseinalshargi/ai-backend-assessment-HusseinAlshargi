@@ -1,0 +1,34 @@
+[
+    {
+        "question": "What is the primary gas composition of Jupiter's atmosphere?",
+        "expected": "hydrogen and helium"
+    },
+    {
+        "question": "Why is Mars called the 'Red Planet'?",
+        "expected": "due to its reddish appearance, which is caused by iron oxide on its surface"
+    },
+    {
+        "question": "How many moons does Saturn have, and what is the name of its largest moon?",
+        "expected": "146 known moons, with Titan being its largest"
+    },
+    {
+        "question": "What is the primary atmospheric component of Mars?",
+        "expected": "carbon dioxide"
+    },
+    {
+        "question": "How does Jupiter compare in mass to all other planets combined?",
+        "expected": "more than two and a half times that of all the other planets in the Solar System combined"
+    },
+    {
+        "question": "What is Saturn best known for?",
+        "expected": "its prominent ring system"
+    },
+    {
+        "question": "What was a significant impact of the invention of the printing press?",
+        "expected": "a massive increase in literacy, the wider dissemination of scientific and religious texts, and played a crucial role in the Renaissance and the Protestant Reformation"
+    },
+    {
+        "question": "When did the first humans walk on the Moon, and who were they?",
+        "expected": "On July 20, 1969, American astronauts Neil Armstrong and Buzz Aldrin"
+    }
+]

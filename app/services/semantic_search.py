@@ -3,7 +3,7 @@ from sklearn.metrics import pairwise  # to calculate cosine similarity
 
 
 import app.database as db  # to create a session to interact with the db
-from app.models.create_embeddings import embed_text  # to use the embedding model to process the text chunks
+from app.retrieval.create_embeddings import embed_text  # to use the embedding model to process the text chunks
 
 session = db.session  
 

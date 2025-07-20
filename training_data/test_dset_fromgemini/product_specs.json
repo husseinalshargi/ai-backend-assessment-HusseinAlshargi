@@ -1,0 +1,49 @@
+[
+    {
+        "product_id": "PN001",
+        "name": "UltraBook Pro 15",
+        "category": "Laptop",
+        "specifications": {
+            "screen_size_inches": 15.6,
+            "processor_cores": 8,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "battery_life_hours": 12.5,
+            "weight_kg": 1.7
+        },
+        "price_usd": 1499.99,
+        "available_units": 1500,
+        "warranty_years": 2
+    },
+    {
+        "product_id": "SM005",
+        "name": "SmartPhone X",
+        "category": "Smartphone",
+        "specifications": {
+            "screen_size_inches": 6.7,
+            "camera_megapixels_main": 50,
+            "ram_gb": 12,
+            "storage_gb": 256,
+            "battery_mah": 4500,
+            "weight_g": 185
+        },
+        "price_usd": 899.00,
+        "available_units": 3000,
+        "warranty_years": 1
+    },
+    {
+        "product_id": "CAM010",
+        "name": "ProCam 4K",
+        "category": "Camera",
+        "specifications": {
+            "sensor_megapixels": 24,
+            "video_resolution_k": 4,
+            "optical_zoom": 10,
+            "max_iso": 25600,
+            "weight_g": 750
+        },
+        "price_usd": 1200.50,
+        "available_units": 800,
+        "warranty_years": 3
+    }
+]

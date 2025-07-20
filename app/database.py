@@ -42,6 +42,6 @@ REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 #connect to Redis server
 r = redis.Redis(
     host = REDIS_HOST,
-    port = REDIS_PORT,
+    port = int(REDIS_PORT), #convert to int as it expects an integer for port
     password = REDIS_PASSWORD,
 )
