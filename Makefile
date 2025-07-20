@@ -5,5 +5,5 @@ setup:
 
 run:
 	start /B cmd /C "ollama run llama3"
-	venv\Scripts\python -m uvicorn app.main:app --reload
+	venv\Scripts\python -m uvicorn app.main:api_app --reload
 

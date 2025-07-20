@@ -1,0 +1,14 @@
+[
+    {
+        "topic": "Photosynthesis",
+        "info": "Photosynthesis is the process used by plants, algae, and cyanobacteria to convert light energy into chemical energy, which is stored in glucose. This process primarily uses sunlight, water, and carbon dioxide to produce glucose and oxygen. It is fundamental for life on Earth as it provides oxygen for respiration and forms the base of most food chains. Chlorophyll, a green pigment, plays a key role in absorbing light energy, giving plants their green color."
+    },
+    {
+        "topic": "Cell Theory",
+        "info": "Cell theory is one of the fundamental tenets of biology. It states that all living organisms are composed of one or more cells, that the cell is the basic unit of structure and organization in organisms, and that all cells arise from pre-existing cells. This theory, developed in the mid-19th century by scientists like Matthias Schleiden, Theodor Schwann, and Rudolf Virchow, underpins our understanding of life and how it propagates."
+    },
+    {
+        "topic": "DNA Structure",
+        "info": "Deoxyribonucleic acid (DNA) is a molecule that carries the genetic instructions used in the growth, development, functioning, and reproduction of all known organisms and many viruses. The most famous structure of DNA is the double helix, proposed by Watson and Crick. It consists of two long strands of nucleotides twisted around each other, with bases (Adenine, Thymine, Guanine, Cytosine) forming pairs across the strands."
+    }
+]

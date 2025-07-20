@@ -1,14 +1,16 @@
 import json #to convert the data from json format to dict
 import app.database as db  #to access the database session and redis instance
-from app.models.conversation_summary import ConversationSummary  #to access the ConversationSummary model
+from app.models.conversation_summary import ConversationSummary
+from app.services.generate_summary import generate_summary  #to access the ConversationSummary model
 
 session = db.session  #create a session to interact with the db
 
 #short term memory (saved in redis) to store the conversation context
 short_term_prefix = "conversation:" #prefix for short term memory keys
-short_term_limit = 5  #limit the number of messages in short term memory
+short_term_limit = 10  #limit the number of messages in short term memory
 
-summarize_turns = 10  #number of turns to summarize in long term memory
+summarize_turns = 10  #number of turns to summarize the conversation
+
 
 #store a message in the short term memory
 def store_message(conversation_id, role, message):
@@ -16,8 +18,15 @@ def store_message(conversation_id, role, message):
     messages = db.r.lrange(key, 0, -1)  #retrieve all messages
     if len(messages) >= short_term_limit:
         db.r.lpop(key)  #remove the oldest message if limit is reached for example if the limit is 5, the 6th message will remove the first one
-    db.r.rpush(key, json.dumps({"role": role, "message": message}))  #store the new message
+    db.r.rpush(key, json.dumps({"role": role, "message": message}))  #store the new message as a json string
 
+    #store a summary from the long term memory if the number of messages is a multiple of short_term_limit
+    if db.r.llen(key) % summarize_turns == 0:
+        #if the number of messages is a multiple of summarize_turns, store a summary in long term memory, store the last 10 messages for summarization
+        history = [json.loads(m) for m in db.r.lrange(key, 0, -1)] #convert messages from json format to dict, it will be a list of dicts
+        summary = generate_summary(history)  #generate the summary
+        #store the summary in the redis database
+        store_summary(conversation_id, summary, db.r.llen(key))
 
 #get the conversation history from short term memory
 def get_context(conversation_id):

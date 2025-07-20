@@ -1,0 +1,30 @@
+[
+    {
+        "animal": "Giant Panda",
+        "facts": [
+            "Giant pandas are native to south central China.",
+            "Their diet consists almost exclusively of bamboo, though they are technically omnivores.",
+            "Pandas are an endangered species, primarily due to habitat loss and fragmentation.",
+            "They are known for their distinctive black and white fur, which helps them camouflage in snowy and rocky habitats.",
+            "A newborn panda cub is about the size of a stick of butter."
+        ]
+    },
+    {
+        "animal": "Blue Whale",
+        "facts": [
+            "The blue whale is the largest animal known to have ever lived, reaching up to 98 feet (30 meters) in length and weighing over 190 tons.",
+            "They are baleen whales, feeding mainly on tiny crustaceans called krill, consuming up to 4 tons per day.",
+            "Blue whales can live for 80 to 90 years in the wild.",
+            "Their heart is about the size of a small car, and their blood vessels are so wide a human could swim through them."
+        ]
+    },
+    {
+        "animal": "Emperor Penguin",
+        "facts": [
+            "Emperor penguins are the tallest and heaviest of all living penguin species.",
+            "They are endemic to Antarctica and breed during the Antarctic winter.",
+            "These penguins can dive to depths of over 500 meters (1,600 feet) and stay submerged for over 20 minutes.",
+            "Males incubate the single egg on their feet for over two months without eating."
+        ]
+    }
+]
