@@ -8,6 +8,8 @@ session = db.session  #create a session to interact with the db
 short_term_prefix = "conversation:" #prefix for short term memory keys
 short_term_limit = 5  #limit the number of messages in short term memory
 
+summarize_turns = 10  #number of turns to summarize in long term memory
+
 #store a message in the short term memory
 def store_message(conversation_id, role, message):
     key = f"{short_term_prefix}{conversation_id}"
@@ -15,6 +17,7 @@ def store_message(conversation_id, role, message):
     if len(messages) >= short_term_limit:
         db.r.lpop(key)  #remove the oldest message if limit is reached for example if the limit is 5, the 6th message will remove the first one
     db.r.rpush(key, json.dumps({"role": role, "message": message}))  #store the new message
+
 
 #get the conversation history from short term memory
 def get_context(conversation_id):
