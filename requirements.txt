@@ -16,3 +16,4 @@ scikit-learn
 redis
 fastapi
 uvicorn[standard]
+apscheduler
