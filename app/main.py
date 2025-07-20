@@ -11,6 +11,7 @@ from app.services.ingestion import ingest_files
 from app.services.evaluation import evaluate_answer
 from app.api.Scheduler import scheduler_router
 from app.api.ask import ask_router
+from app.api.train_document import train_router
 
 typer_app = typer.Typer()
 scheduler = AsyncIOScheduler()
@@ -37,6 +38,7 @@ api_app = FastAPI(lifespan=lifespan) #added the function to the api obj so that 
 api_app.include_router(generate_router, prefix="/api/report")
 api_app.include_router(scheduler_router, prefix='/api')
 api_app.include_router(ask_router, prefix='/api')
+api_app.include_router(train_router, prefix='/api')
 
 #CLI commands:
 
