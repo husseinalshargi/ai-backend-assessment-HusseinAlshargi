@@ -1,4 +1,4 @@
-from app.database import sessionlocal #to create a session to interact with the db
+import app.database as db #to create a session to interact with the db
 from app.models.document_chunk_record import DocumentChunkRecord
 from app.models.ingested_file_record import IngestedFileRecord  # to use the model to filter chunks
 from app.services.semantic_search import search_semantic  # to use semantic search
@@ -7,7 +7,7 @@ from app.services.keyword_search import search_keywords  # to use keyword search
 from collections import defaultdict #in order to create a dict that can provide default values when a key is not found
 
 
-session = sessionlocal() #create a session to interact with the db
+session = db.session #create a session to interact with the db
 RRF_K = 60 #to caalculate the RRF score -> Reciprocal Rank Fusion
 
 #a function to retrieve relevant chunks of both semantic and keyword search then return the top K chunks based on RRF score
@@ -30,7 +30,6 @@ def reciprocal_rank_fusion(semantic_results, keyword_results, top_k=3):
 
 
 def get_filtered_chunks(from_date=None, to_date=None, tenant=None, file_name=None):
-    session = sessionlocal()  # create a session to interact with the db
     query = session.query(DocumentChunkRecord).join(IngestedFileRecord, DocumentChunkRecord.document_id == IngestedFileRecord.id).distinct()  #join to get the file metadata
 
     #apply filters based on provided parameters

@@ -4,6 +4,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
 from dotenv import load_dotenv
 import os
+import redis #to use redis for in-memory storage
+
+#connect to postgresql database using sqlalchemy
 
 load_dotenv()  #load environment variables from .env file
 
@@ -22,10 +25,23 @@ engine = create_engine(database_url, pool_pre_ping =True)
 #to create a session factory which will be used to create sessions when we need to interact with the db
 #in order ro interact with the db we need to create a session to execute queries, flush -> convert to sql commands and execute them, commit -> save the changes to the db
 sessionlocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
+session = sessionlocal()
 
 Base = declarative_base()
 
 
 
+#connect to redis server using redis-py
+load_dotenv() #it will read from the file in the same directory
 
+#access the environment variables
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = int(os.getenv('REDIS_PORT'))
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
+#connect to Redis server
+r = redis.Redis(
+    host = REDIS_HOST,
+    port = REDIS_PORT,
+    password = REDIS_PASSWORD,
+)

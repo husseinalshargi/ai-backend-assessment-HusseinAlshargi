@@ -2,10 +2,10 @@ import numpy as np
 from sklearn.metrics import pairwise  # to calculate cosine similarity
 
 
-from app.database import sessionlocal  # to create a session to interact with the db
+import app.database as db  # to create a session to interact with the db
 from app.services.create_embeddings import embed_text  # to use the embedding model to process the text chunks
 
-session = sessionlocal()  # create a session to interact with the db
+session = db.session  
 
 def parse_postgres_embedding(embedding_str):
     #safely parse a PostgreSQL array string to a Python list from a string 

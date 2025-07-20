@@ -2,10 +2,10 @@
 from sklearn.feature_extraction.text import TfidfVectorizer #to convert text to TF-IDF vectors
 import numpy as np
 
-from app.database import sessionlocal
+import app.database as db  
 from app.models.document_chunk_record import DocumentChunkRecord
 
-session = sessionlocal()  # create a session to interact with the db
+session = db.session  # create a session to interact with the db
 
 def search_keywords(query, filtered_chunks, top_k=3):
     #retrive all chunck texts from the database

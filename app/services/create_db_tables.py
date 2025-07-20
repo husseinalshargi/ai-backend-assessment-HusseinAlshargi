@@ -5,6 +5,7 @@ from app.database import engine, Base
 #not sure why yet..  but we need to import the model to create the table
 from app.models.ingested_file_record import IngestedFileRecord
 from app.models.document_chunk_record import DocumentChunkRecord
+from app.models.conversation_summary import ConversationSummary
 
 
 def create_tables():
