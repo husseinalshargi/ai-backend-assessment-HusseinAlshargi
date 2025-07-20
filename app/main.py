@@ -3,7 +3,7 @@ import typer
 from fastapi import FastAPI
 
 from app.routers import memory
-from app.services.create_db_tables import create_tables
+from app.schemas.create_db_tables import create_tables
 from app.services.ingestion import ingest_files
 
 typer_app = typer.Typer()

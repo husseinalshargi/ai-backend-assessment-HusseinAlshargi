@@ -1,0 +1,82 @@
+[
+    {
+        "question": "What is the primary gas composition of Jupiter's atmosphere?",
+        "expected": "hydrogen and helium"
+    },
+    {
+        "question": "Why is Mars called the 'Red Planet'?",
+        "expected": "due to its reddish appearance, which is caused by iron oxide on its surface"
+    },
+    {
+        "question": "How many moons does Saturn have, and what is the name of its largest moon?",
+        "expected": "146 known moons, with Titan being its largest"
+    },
+    {
+        "question": "What is the primary atmospheric component of Mars?",
+        "expected": "carbon dioxide"
+    },
+    {
+        "question": "How does Jupiter compare in mass to all other planets combined?",
+        "expected": "more than two and a half times that of all the other planets in the Solar System combined"
+    },
+    {
+        "question": "What is Saturn best known for?",
+        "expected": "its prominent ring system"
+    },
+    {
+        "question": "What was a significant impact of the invention of the printing press?",
+        "expected": "a massive increase in literacy, the wider dissemination of scientific and religious texts, and played a crucial role in the Renaissance and the Protestant Reformation"
+    },
+    {
+        "question": "When did the first humans walk on the Moon, and who were they?",
+        "expected": "On July 20, 1969, American astronauts Neil Armstrong and Buzz Aldrin"
+    },
+    {
+        "question": "What symbolized the Cold War's Iron Curtain and when did it fall?",
+        "expected": "The Berlin Wall, on November 9, 1989"
+    },
+    {
+        "question": "What major historical movements were impacted by the printing press?",
+        "expected": "the Renaissance and the Protestant Reformation"
+    },
+    {
+        "question": "How long did the Berlin Wall divide East and West Berlin?",
+        "expected": "nearly 30 years"
+    },
+    {
+        "question": "Who piloted the command module for Apollo 11?",
+        "expected": "Michael Collins"
+    },
+    {
+        "question": "What are the main inputs required for photosynthesis?",
+        "expected": "sunlight, water, and carbon dioxide"
+    },
+    {
+        "question": "According to cell theory, where do all cells arise from?",
+        "expected": "from pre-existing cells"
+    },
+    {
+        "question": "Which scientists were key in developing cell theory in the mid-19th century?",
+        "expected": "Matthias Schleiden, Theodor Schwann, and Rudolf Virchow"
+    },
+    {
+        "question": "What pigment is key in absorbing light energy during photosynthesis?",
+        "expected": "Chlorophyll"
+    },
+    {
+        "question": "What does cell theory state about the basic unit of structure and organization in organisms?",
+        "expected": "the cell is the basic unit of structure and organization in organisms"
+    },
+    {
+        "question": "What is the primary function of DNA?",
+        "expected": "carries the genetic instructions used in the growth, development, functioning, and reproduction of all known organisms"
+    },
+    {
+        "question": "What is the primary diet of a Giant Panda?",
+        "expected": "almost exclusively of bamboo"
+    },
+    {
+        "question": "How large is a blue whale's heart?",
+        "expected": "about the size of a small car"
+    }
+]

@@ -1,7 +1,7 @@
-from app.services.generate_answer import generate_answer
+from app.retrieval.generate_answer import generate_answer
 import datetime
 
-from app.services.generate_summary import generate_summary
+from app.retrieval.generate_summary import generate_summary
 
 def test_generated_answer(): 
     #example query

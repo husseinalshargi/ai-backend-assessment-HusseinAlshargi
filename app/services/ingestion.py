@@ -5,7 +5,7 @@ from pathlib import Path
 
 from app.database import sessionlocal #to create a session to interact with the db
 from app.models.ingested_file_record import IngestedFileRecord #to use the model to create a record in the db
-from app.services.create_embeddings import embed_text #to use the embedding model to process the text chunks
+from app.models.create_embeddings import embed_text #to use the embedding model to process the text chunks
 from app.models.document_chunk_record import DocumentChunkRecord #to use the model to create a record for the document chunks
 
 session = sessionlocal() #create a session to interact with the db

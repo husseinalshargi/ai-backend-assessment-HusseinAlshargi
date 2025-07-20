@@ -1,7 +1,7 @@
 import json #to convert the data from json format to dict
 import app.database as db  #to access the database session and redis instance
 from app.models.conversation_summary import ConversationSummary
-from app.services.generate_summary import generate_summary  #to access the ConversationSummary model
+from app.retrieval.generate_summary import generate_summary  #to access the ConversationSummary model
 
 session = db.session  #create a session to interact with the db
 
