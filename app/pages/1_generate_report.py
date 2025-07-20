@@ -1,7 +1,6 @@
 from Home import st
 import requests #to get or post data through apis
 
-
 st.title("Generate DOCX Summary Report")
 
 #first thing is to take info from the user to create the report 

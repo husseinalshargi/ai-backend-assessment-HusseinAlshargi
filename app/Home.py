@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 #important information: in order to see the page in a browser type in the terminal:
 #ensure that you are using the venv
 #1- cd (to the folder of the project)
