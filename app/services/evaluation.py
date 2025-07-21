@@ -31,7 +31,7 @@ def evaluate_answer(question_key = "question", correct_answer_key = "expected"):
 
         #generate the answer using the AI assistant
         start_time = time.time()  #start time submitting the query 
-        generated_answer = generate_answer.generate_answer(question)  #generate the answer using the AI assistant
+        generated_answer = generate_answer.generate_answer(question).get("answer", "")  #generate the answer using the AI assistant
         end_time = time.time()  #end time for performance evaluation
 
         latency_ms  = round((end_time - start_time) * 1000, 4)  #convert to milliseconds

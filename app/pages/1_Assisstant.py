@@ -25,12 +25,27 @@ if st.button("Get Answer") and question: #if the question isn't empty and the bu
             }
 
             #send POST request
-            response = requests.post("http://localhost:8000/api/ask", json=payload)
+            response = requests.post("http://localhost:8000/api/chat", json=payload)
 
             if response.ok and response.json():
                 result = response.json()
                 st.subheader("Answer:")
-                st.success(result)
+                st.success(result.get("answer", "No answer returned."))
+
+                # Display metadata separately
+                with st.expander("More Info"):
+                    st.markdown(f"**Conversation ID:** `{result.get('conversation_id')}`")
+                    st.markdown(f"**Latency:** `{result.get('latency_ms')} ms`")
+                    st.markdown(f"**Tokens In:** `{result.get('tokens_in')}`")
+                    st.markdown(f"**Tokens Out:** `{result.get('tokens_out')}`")
+
+                    sources = result.get("sources", [])
+                    if sources:
+                        st.markdown("**Sources:**")
+                        for source in sources:
+                            st.markdown(f"- `{source.get('source')}` (score: `{source.get('score')}`)")
+                    else:
+                        st.markdown("**Sources:** None")
             else:
                 st.error(f"Error: {response.text}")
         except Exception as e:

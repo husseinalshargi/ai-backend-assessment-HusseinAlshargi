@@ -13,20 +13,28 @@ RRF_K = 60 #to caalculate the RRF score -> Reciprocal Rank Fusion
 #a function to retrieve relevant chunks of both semantic and keyword search then return the top K chunks based on RRF score
 def reciprocal_rank_fusion(semantic_results, keyword_results, top_k=3): 
     scores = defaultdict(float) #default is 0.0 for any key not found
+    sources = {}  # to get file name from text
 
     #get RRF scores to semantic results
-    for rank, text in enumerate(semantic_results):
+    for rank, item in enumerate(semantic_results):
+        text = item['chunk']  # extract chunk text
         scores[text] += 1 / (RRF_K + rank)
+        sources[text] = item.get('file_name', '')
 
     #get RRF scores to keyword results
-    for rank, text in enumerate(keyword_results):
+    for rank, item in enumerate(keyword_results):
+        text = item['chunk']
         scores[text] += 1 / (RRF_K + rank)
+        if text not in sources:
+            sources[text] = item.get('file_name', '')
+
+
 
     # Sort chunks by combined RRF score
     ranked_chunks = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
     # Return top_k chunk texts
-    return [text for text, _ in ranked_chunks[:top_k]]
+    return [{"text": text, "score": score, "file_name": sources.get(text, '')} for text, score in ranked_chunks[:top_k]]
 
 
 def get_filtered_chunks(from_date=None, to_date=None, tenant=None, file_name=None):

@@ -19,9 +19,8 @@ class AskRequest(BaseModel):
 
 
 
-@ask_router.post("/ask")
-@ask_router.post("/ask")
-def ask(request: AskRequest):
+@ask_router.post("/chat")
+def chat(request: AskRequest):
     result = generate_answer(
         query=request.query,
         from_date=request.from_date,

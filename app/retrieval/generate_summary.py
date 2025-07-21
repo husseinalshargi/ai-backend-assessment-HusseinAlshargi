@@ -1,6 +1,5 @@
 from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
-from app.retrieval.retrive_documents import retrieve_relevant_chunks
 
 import os  
 from dotenv import load_dotenv

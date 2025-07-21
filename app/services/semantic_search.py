@@ -20,10 +20,10 @@ def search_semantic(query, filtered_chunks, top_k = 3):
         chunk_embedding = np.array(parse_postgres_embedding(chunk.embedding)).reshape(1, -1)
         
         similarity = pairwise.cosine_similarity(query_embedding, chunk_embedding)
-        scored_chunks.append((similarity, chunk.chunk_text))
+        scored_chunks.append((similarity, chunk.chunk_text, chunk.document.file_name))
     
     #sort by similarity and return top K
     top_chunks = sorted(scored_chunks, key=lambda x: x[0][0], reverse=True)[:top_k] #to sort by similarity in descending order and get the top K chunks
 
     #return only the chunk texts not the similarity scores
-    return [chunk for _, chunk in top_chunks]
+    return [{"chunk":chunk, "file_name":file_name} for _, chunk, file_name in top_chunks]

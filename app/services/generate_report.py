@@ -25,7 +25,8 @@ def generate_docx_report(title, sections, prompt_context, tenant, file_id):
     #if there isn't any sections to write, it will generate it
     if not sections:
         outline_prompt = f"Generate an outline for a report titled: '{title}' with this context: {prompt_context}"
-        outline_text = generate_answer(outline_prompt)
+        outline_result  = generate_answer(outline_prompt)
+        outline_text = outline_result.get("answer", "")
         sections = [s.strip() for s in outline_text.split("\n") if s.strip()]
 
     #table of Contents placeholder
@@ -38,7 +39,8 @@ def generate_docx_report(title, sections, prompt_context, tenant, file_id):
     for section in sections:
         doc.add_heading(section, level=1)
         section_prompt = f"{prompt_context}\n\nWrite a section titled '{section}'"
-        section_content = generate_answer(section_prompt)
+        section_result  = generate_answer(section_prompt)
+        section_content = section_result.get("answer", "")
         doc.add_paragraph(section_content)
         doc.add_page_break()
 
