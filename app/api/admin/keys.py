@@ -48,3 +48,12 @@ def deactivate_key(key: str, db: Session = Depends(get_db)):
     api_key.active = False
     db.commit()
     return {"message": "Key deactivated"}
+
+@keys_router.post("/{key}/activate")
+def activate_key(key: str, db: Session = Depends(get_db)):
+    api_key = db.query(APIKey).filter_by(key=key).first()
+    if not api_key:
+        return JSONResponse(status_code=404, content={"detail":"API key not found"})
+    api_key.active = True
+    db.commit()
+    return {"message": "Key activated"}
