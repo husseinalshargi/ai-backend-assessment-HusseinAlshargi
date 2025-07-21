@@ -42,7 +42,7 @@ api_app.include_router(generate_router, prefix="/api/user/report")
 api_app.include_router(scheduler_router, prefix='/api/admin')
 api_app.include_router(ask_router, prefix='/api/user')
 api_app.include_router(train_router, prefix='/api/user')
-api_app.include_router(keys_router, prefix='/api/admin')
+api_app.include_router(keys_router, prefix='/api/admin/keys')
 
 #to add the middelware of admin to the api obj
 api_app.add_middleware(APIKeyMiddleware)

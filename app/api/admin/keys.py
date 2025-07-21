@@ -2,10 +2,18 @@
 from fastapi import APIRouter,Depends
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+from pydantic import BaseModel, EmailStr
 
 
 import app.database as db 
 from app.models.api_keys_record import APIKey
+
+class KeyCreateRequest(BaseModel):
+    role: str
+    owner_email: EmailStr
+
+
+
 
 keys_router = APIRouter()
 
@@ -17,15 +25,15 @@ def get_db(): #make it here so we do not use the global one
         db_session.close()
 
 
-@keys_router.get("/get_keys/")
+@keys_router.get("/get_keys")
 def list_keys(db: Session = Depends(get_db)):
     return db.query(APIKey).all()
 
-@keys_router.post("/create_key/")
-def create_key(role: str, owner_email: str, db: Session = Depends(get_db)):
+@keys_router.post("/create_key")
+def create_key(payload: KeyCreateRequest, db: Session = Depends(get_db)):
     new_key = APIKey(
-        role=role,
-        owner_email=owner_email,
+        role=payload.role,
+        owner_email=payload.owner_email,
     )
     db.add(new_key)
     db.commit()
