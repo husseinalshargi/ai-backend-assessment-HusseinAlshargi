@@ -5,15 +5,16 @@ from contextlib import asynccontextmanager #to handle both start up and shutdown
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from app.api.report.generate import generate_router
+from app.api.user.report.generate import generate_router
 from app.schemas.create_db_tables import create_tables
 from app.scripts.create_api_key import create_api_key
 from app.services.ingestion import ingest_files
 from app.services.evaluation import evaluate_answer
 from app.api.admin.Scheduler import scheduler_router
-from app.api.ask import ask_router
-from app.api.train_document import train_router
+from app.api.user.ask import ask_router
+from app.api.user.train_document import train_router
 from app.middleware.api_key_auth import APIKeyMiddleware
+from app.api.admin.keys import keys_router
 
 typer_app = typer.Typer()
 scheduler = AsyncIOScheduler()
@@ -37,10 +38,11 @@ async def lifespan(app: FastAPI):
 
 
 api_app = FastAPI(lifespan=lifespan) #added the function to the api obj so that it starts and shuted down with it
-api_app.include_router(generate_router, prefix="/api/report")
+api_app.include_router(generate_router, prefix="/api/user/report")
 api_app.include_router(scheduler_router, prefix='/api/admin')
-api_app.include_router(ask_router, prefix='/api')
-api_app.include_router(train_router, prefix='/api')
+api_app.include_router(ask_router, prefix='/api/user')
+api_app.include_router(train_router, prefix='/api/user')
+api_app.include_router(keys_router, prefix='/api/admin')
 
 #to add the middelware of admin to the api obj
 api_app.add_middleware(APIKeyMiddleware)

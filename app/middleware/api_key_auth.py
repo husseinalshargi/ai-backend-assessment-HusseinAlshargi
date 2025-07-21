@@ -18,11 +18,14 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         session = None
         response = None
+
+        #header to ask for an api key
+        key = request.headers.get("X-API-Key") #in all cases we need an api key
+        if not key:
+                return JSONResponse(status_code=401, content={"detail":"Missing API key"}) #if the user did not include the api key
+
         #here we will check if an admin is using the request to include his use only
         if request.url.path.startswith("/api/admin"):
-            key = request.headers.get("X-API-Key") #header to ask for an api key
-            if not key:
-                return JSONResponse(status_code=401, content={"detail":"Missing API key"}) #if the user did not include the api key
 
             session = db.sessionlocal()
             try:
@@ -44,6 +47,29 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 return JSONResponse(status_code=403, content={"detail": "Forbidden"})  # instead of 500
             finally:
                 session.close()
+        elif request.url.path.startswith("/api/user"): #then anyone with api key can use it
+            session = db.sessionlocal()
+            try:
+                api_key = session.query(APIKey).filter_by(key=key, active=True).first() #search for the key in the db
+                if not api_key: #if it is not there or it's not associated to anyone
+                    return JSONResponse(status_code=403, content={"detail": "Forbidden"})
+                if api_key.role not in ["admin", "user"]:
+                    return JSONResponse(status_code=403, content={"detail": "Forbidden"})
+
+                if not rate_limit(key):
+                    return JSONResponse(status_code=429, content={"detail":"Rate limit exceeded"})
+
+                # Update last used timestamp
+                api_key.last_used_at = datetime.now(timezone.utc)
+                session.commit()
+
+            except Exception as e:
+                print(f"[Middleware Error]: {e}")
+                return JSONResponse(status_code=403, content={"detail": "Forbidden"})  # instead of 500
+            finally:
+                session.close()
+
+
 
 
         #process the request and get the response from it

@@ -1,6 +1,5 @@
 from app.models.api_keys_record import APIKey
 from app.database import sessionlocal
-from datetime import datetime, timezone
 
 def create_api_key(role, owner_email):
     session = sessionlocal()
