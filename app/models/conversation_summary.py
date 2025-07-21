@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, func
-from datetime import datetime
 from app.database import Base
 
 class ConversationSummary(Base):

@@ -6,6 +6,7 @@ from app.database import engine, Base
 from app.models.ingested_file_record import IngestedFileRecord
 from app.models.document_chunk_record import DocumentChunkRecord
 from app.models.conversation_summary import ConversationSummary
+from app.models.api_keys_record import APIKey
 
 
 def create_tables():

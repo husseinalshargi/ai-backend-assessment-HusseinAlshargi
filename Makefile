@@ -5,6 +5,10 @@ setup:
 	venv\Scripts\pip.exe install -r requirements.txt
 	ollama pull llama3
 	(source venv/Scripts/activate && python -m app.main create-tables-in-db)
+	@echo "______________________"
+	@echo "Creating an admin user..."
+	(source venv/Scripts/activate && python -m app.main create-an-api-key "admin" "hussein@admin.com")
+
 
 run:
 	@echo "Starting Ollama in background..."
