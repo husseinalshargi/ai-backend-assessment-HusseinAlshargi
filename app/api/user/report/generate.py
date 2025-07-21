@@ -42,7 +42,7 @@ def generate_report(report : ReportRequest): #of type ReportRequest (also a tabl
             "message": "Report generated successfully.",
             "report_id": file_id,
             "report_title": file_title,
-            "download_url": f"/api/report/{file_id}/{file_title}/download"
+            "download_url": f"/api/user/report/{file_id}/{file_title}/download"
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
