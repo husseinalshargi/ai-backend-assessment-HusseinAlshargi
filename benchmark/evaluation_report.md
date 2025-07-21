@@ -1,6 +1,6 @@
 # Evaluation Report
 
-*Generated on: 2025-07-21 05:16:50*
+*Generated on: 2025-07-21 20:52:36*
 
 ----
 ### Question:
@@ -8,11 +8,11 @@ What is the primary gas composition of Jupiter's atmosphere?
 
 <small>Expected Answer: hydrogen and helium</small>
 
-<small>Generated Answer: According to the document context, the primary gases that make up Jupiter's atmosphere are hydrogen and helium.</small>
+<small>Generated Answer: According to the context, Jupiter's atmosphere is primarily composed of hydrogen.</small>
 
-<small>Similarity: 47.0%</small>
+<small>Similarity: 43.69%</small>
 
-<small>Latency: 20101.4979 ms</small>
+<small>Latency: 21413.0883 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -22,11 +22,11 @@ Why is Mars called the 'Red Planet'?
 
 <small>Expected Answer: due to its reddish appearance, which is caused by iron oxide on its surface</small>
 
-<small>Generated Answer: According to the document, Mars is often called the "Red Planet" due to its reddish appearance, which is caused by iron oxide on its surface.</small>
+<small>Generated Answer: According to the provided context, Mars is often referred to as the "Red Planet" due to its reddish appearance, which is caused by iron oxide on its surface.</small>
 
-<small>Similarity: 44.51%</small>
+<small>Similarity: 42.71%</small>
 
-<small>Latency: 11529.8572 ms</small>
+<small>Latency: 21025.1756 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -36,11 +36,11 @@ How many moons does Saturn have, and what is the name of its largest moon?
 
 <small>Expected Answer: 146 known moons, with Titan being its largest</small>
 
-<small>Generated Answer: According to the document context, Saturn has 146 known moons, and its largest moon is Titan.</small>
+<small>Generated Answer: According to the context, Saturn has 146 known moons, and its largest moon is Titan.</small>
 
-<small>Similarity: 39.96%</small>
+<small>Similarity: 39.72%</small>
 
-<small>Latency: 17957.9003 ms</small>
+<small>Latency: 18674.8266 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -50,11 +50,11 @@ What is the primary atmospheric component of Mars?
 
 <small>Expected Answer: carbon dioxide</small>
 
-<small>Generated Answer: According to the document, the primary atmospheric component of Mars is carbon dioxide.</small>
+<small>Generated Answer: The primary atmospheric component of Mars is carbon dioxide.</small>
 
-<small>Similarity: 35.21%</small>
+<small>Similarity: 34.21%</small>
 
-<small>Latency: 11386.8496 ms</small>
+<small>Latency: 19111.0563 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -64,11 +64,11 @@ How does Jupiter compare in mass to all other planets combined?
 
 <small>Expected Answer: more than two and a half times that of all the other planets in the Solar System combined</small>
 
-<small>Generated Answer: According to the context, Jupiter has a mass more than two and a half times that of all the other planets in the Solar System combined.</small>
+<small>Generated Answer: According to the document, Jupiter has a mass more than two and a half times that of all the other planets in the Solar System combined.</small>
 
-<small>Similarity: 46.9%</small>
+<small>Similarity: 49.59%</small>
 
-<small>Latency: 17970.5856 ms</small>
+<small>Latency: 18759.0594 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -82,7 +82,7 @@ What is Saturn best known for?
 
 <small>Similarity: 36.91%</small>
 
-<small>Latency: 12064.4424 ms</small>
+<small>Latency: 20078.6409 ms</small>
 
 <small>Hallucinated: No</small>
 
@@ -100,7 +100,7 @@ What was a significant impact of the invention of the printing press?
 
 <small>Similarity: 60.46%</small>
 
-<small>Latency: 15131.3195 ms</small>
+<small>Latency: 21295.727 ms</small>
 
 <small>Hallucinated: Yes</small>
 
@@ -110,21 +110,19 @@ When did the first humans walk on the Moon, and who were they?
 
 <small>Expected Answer: On July 20, 1969, American astronauts Neil Armstrong and Buzz Aldrin</small>
 
-<small>Generated Answer: The question doesn't mention anything about scientific advancement, Saturn, or the printing press. The text only talks about the fall of the Berlin Wall, Saturn's composition and moons, and the invention of the printing press.
+<small>Generated Answer: The document doesn't mention anything about humans walking on the Moon. The context is about scientific advancement, but it only mentions the fall of the Berlin Wall, the composition of Saturn's atmosphere, and the invention of the printing press by Johannes Gutenberg. Therefore, I cannot provide an answer to this question as it is not relevant to the provided context.</small>
 
-So, I'll have to say that there is no information provided in this context about when humans walked on the Moon or who they were.</small>
+<small>Similarity: 4.66%</small>
 
-<small>Similarity: 4.01%</small>
-
-<small>Latency: 19353.9212 ms</small>
+<small>Latency: 21194.8271 ms</small>
 
 <small>Hallucinated: Yes</small>
 
 
 ---
 
-**Average Similarity:** 39.37
+**Average Similarity:** 38.9938
 
-**Average Latency:** 15687.05 ms
+**Average Latency:** 20194.05 ms
 
 **Hallucination Rate:** 25.0%

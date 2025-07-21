@@ -11,6 +11,6 @@ def refresh():
     ingest_files()
 
 
-@scheduler_router.post("/evaluate/")
+@scheduler_router.post("/evaluate")
 def evaluate():
     evaluate_answer()
